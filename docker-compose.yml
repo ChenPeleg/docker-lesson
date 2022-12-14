@@ -1,0 +1,36 @@
+# Add version
+version: ""
+#Define the services we have
+services:
+  app:
+    build: .
+    volumes:
+    # add volumes
+      - ?
+    ports:
+      #add port fowrding
+      - ?
+    environment:
+    #What env vars we need in the django app?
+      - POSTGRES_DB=postgres
+      - ?
+      - ?
+    image: app:django
+    container_name: django_container
+    # What is the command we have to run in the django container?
+    command: ?
+    #What are we depand on?
+    depends_on:
+      - ?
+  db:
+  #what image to use?
+    image: ?
+    volumes:
+    # What is the volume? - look it up online for the postgres linux dir
+      - ?
+    # What env vars we need?
+    environment:
+      - POSTGRES_DB=postgres
+      - ?
+      - ?
+    container_name: postgres_db
