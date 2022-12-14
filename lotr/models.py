@@ -20,7 +20,7 @@ class Animal(models.Model):
     ]
 
     name = models.CharField(max_length=50, blank=False, null=False)
-    extinction = models.CharField(max_length=50, blank=False, null=False)
+    extinction = models.CharFiel(max_length=50, blank=False, null=False)
     period = models.CharField(max_length=50, blank=False, null=False, choices=PERIOD_CHOICES)
     taxonomy_class = models.CharField(max_length=50, blank=False, null=False)
     taxonomy_order = models.CharField(max_length=50, blank=False, null=False)
