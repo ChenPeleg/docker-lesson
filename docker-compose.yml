@@ -1,36 +1,28 @@
-# Add version
-version: ""
-#Define the services we have
+version: "3.9" 
 services:
-  app:
+  app:  
     build: .
-    volumes:
-    # add volumes
-      - ?
-    ports:
-      #add port fowrding
-      - ?
-    environment:
-    #What env vars we need in the django app?
+    volumes: 
+      - .:/django
+    ports: 
+      - 8000:8000
+    environment: 
       - POSTGRES_DB=postgres
-      - ?
-      - ?
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     image: app:django
-    container_name: django_container
-    # What is the command we have to run in the django container?
-    command: ?
-    #What are we depand on?
+    container_name: django_container 
+    CMD: ["python" ,"manage.py", "runserver" ,"0.0.0.0:8000"]
     depends_on:
-      - ?
+      - db
   db:
   #what image to use?
-    image: ?
+    image: postgres
     volumes:
-    # What is the volume? - look it up online for the postgres linux dir
-      - ?
+      - ./data/db:/var/lib/postgresql/data 
     # What env vars we need?
     environment:
       - POSTGRES_DB=postgres
-      - ?
-      - ?
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     container_name: postgres_db
